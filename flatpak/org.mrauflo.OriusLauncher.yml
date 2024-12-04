@@ -1,11 +1,11 @@
-id: org.unmojang.FjordLauncher
+id: org.mrauflo.OriusLauncher
 runtime: org.kde.Platform
 runtime-version: 6.7
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.openjdk17
 
-command: fjordlauncher
+command: oriuslauncher
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -27,7 +27,7 @@ modules:
   # Needed for proper Wayland support
   - libdecor.json
 
-  - name: fjordlauncher
+  - name: oriuslauncher
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -135,10 +135,10 @@ modules:
     buildsystem: simple
     build-commands:
       - install -Dm755 prime-run /app/bin/prime-run
-      - mv /app/bin/fjordlauncher /app/bin/fjordrun
-      - install -Dm755 fjordlauncher /app/bin/fjordlauncher
+      - mv /app/bin/oriuslauncher /app/bin/orius-run
+      - install -Dm755 oriuslauncher /app/bin/oriuslauncher
     sources:
       - type: file
         path: prime-run
       - type: file
-        path: fjordlauncher
+        path: oriuslauncher

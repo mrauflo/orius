@@ -23,7 +23,7 @@ assert lib.assertMsg (
   gamemodeSupport -> stdenv.hostPlatform.isLinux
 ) "gamemodeSupport is only available on Linux.";
 stdenv.mkDerivation {
-  pname = "fjordlauncher-unwrapped";
+  pname = "oriuslauncher-unwrapped";
   version = self.shortRev or self.dirtyShortRev or "unknown";
 
   src = nix-filter.lib {
@@ -98,12 +98,12 @@ stdenv.mkDerivation {
       their own mods, texture packs, saves, etc) and helps you manage them and
       their associated options with a simple interface.
     '';
-    homepage = "https://github.com/unmojang/FjordLauncher";
+    homepage = "https://github.com/mrauflo/orius";
     license = lib.licenses.gpl3Only;
     maintainers = with lib.maintainers; [
       evan-goode
     ];
-    mainProgram = "fjordlauncher";
+    mainProgram = "oriuslauncher";
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 }

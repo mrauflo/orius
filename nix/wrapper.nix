@@ -22,7 +22,7 @@
   openal,
   pciutils,
   pipewire,
-  fjordlauncher-unwrapped,
+  oriuslauncher-unwrapped,
   stdenv,
   symlinkJoin,
   udev,
@@ -47,12 +47,12 @@ assert lib.assertMsg (
   textToSpeechSupport -> stdenv.hostPlatform.isLinux
 ) "textToSpeechSupport only has an effect on Linux.";
 let
-  fjordlauncher' = fjordlauncher-unwrapped.override { inherit msaClientID gamemodeSupport; };
+  oriuslauncher' = oriuslauncher-unwrapped.override { inherit msaClientID gamemodeSupport; };
 in
 symlinkJoin {
-  name = "fjordlauncher-${fjordlauncher'.version}";
+  name = "oriuslauncher-${oriuslauncher'.version}";
 
-  paths = [ fjordlauncher' ];
+  paths = [ oriuslauncher' ];
 
   nativeBuildInputs = [ kdePackages.wrapQtAppsHook ];
 
@@ -107,14 +107,14 @@ symlinkJoin {
         xrandr # needed for LWJGL [2.9.2, 3) https://github.com/LWJGL/lwjgl/issues/128
       ] ++ additionalPrograms;
     in
-    [ "--prefix FJORDLAUNCHER_JAVA_PATHS : ${lib.makeSearchPath "bin/java" jdks}" ]
+    [ "--prefix ORIUSLAUNCHER_JAVA_PATHS : ${lib.makeSearchPath "bin/java" jdks}" ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       "--set LD_LIBRARY_PATH ${addDriverRunpath.driverLink}/lib:${lib.makeLibraryPath runtimeLibs}"
       "--prefix PATH : ${lib.makeBinPath runtimePrograms}"
     ];
 
   meta = {
-    inherit (fjordlauncher'.meta)
+    inherit (oriuslauncher'.meta)
       description
       longDescription
       homepage

@@ -23,8 +23,8 @@
 
       ```
       {
-        inputs.fjordlauncher = {
-          url = "github:unmojang/FjordLauncher";
+        inputs.oriuslauncher = {
+          url = "github:mrauflo/orius";
           inputs = {
             flake-compat.follows = "";
           };
@@ -74,7 +74,7 @@
         in
         {
           default = pkgs.mkShell {
-            inputsFrom = [ self.packages.${system}.fjordlauncher-unwrapped ];
+            inputsFrom = [ self.packages.${system}.oriuslauncher-unwrapped ];
             buildInputs = with pkgs; [
               ccache
               ninja
@@ -86,7 +86,7 @@
       formatter = forAllSystems (system: nixpkgsFor.${system}.nixfmt-rfc-style);
 
       overlays.default = final: prev: {
-        fjordlauncher-unwrapped = prev.callPackage ./nix/unwrapped.nix {
+        oriuslauncher-unwrapped = prev.callPackage ./nix/unwrapped.nix {
           inherit
             libnbtplusplus
             nix-filter
@@ -94,7 +94,7 @@
             ;
         };
 
-        fjordlauncher = final.callPackage ./nix/wrapper.nix { };
+        oriuslauncher = final.callPackage ./nix/wrapper.nix { };
       };
 
       packages = forAllSystems (
@@ -103,12 +103,12 @@
           pkgs = nixpkgsFor.${system};
 
           # Build a scope from our overlay
-          fjordPackages = lib.makeScope pkgs.newScope (final: self.overlays.default final pkgs);
+          oriusPackages = lib.makeScope pkgs.newScope (final: self.overlays.default final pkgs);
 
           # Grab our packages from it and set the default
           packages = {
-            inherit (fjordPackages) fjordlauncher-unwrapped fjordlauncher;
-            default = fjordPackages.fjordlauncher;
+            inherit (oriusPackages) oriuslauncher-unwrapped oriuslauncher;
+            default = oriusPackages.oriuslauncher;
           };
         in
         # Only output them if they're available on the current system
@@ -119,15 +119,15 @@
       legacyPackages = forAllSystems (
         system:
         let
-          fjordPackages = self.packages.${system};
+          oriusPackages = self.packages.${system};
           legacyPackages = self.legacyPackages.${system};
         in
         {
-          fjordlauncher-debug = fjordPackages.fjordlauncher.override {
-            fjordlauncher-unwrapped = legacyPackages.fjordlauncher-unwrapped-debug;
+          oriuslauncher-debug = oriuslauncher.oriuslauncher.override {
+            oriuslauncher-unwrapped = legacyPackages.oriuslauncher-unwrapped-debug;
           };
 
-          fjordlauncher-unwrapped-debug = fjordPackages.fjordlauncher-unwrapped.overrideAttrs {
+          oriuslauncher-unwrapped-debug = oriuslauncher.oriuslauncher-unwrapped.overrideAttrs {
             cmakeBuildType = "Debug";
             dontStrip = true;
           };
