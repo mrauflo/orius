@@ -123,11 +123,11 @@
           legacyPackages = self.legacyPackages.${system};
         in
         {
-          oriuslauncher-debug = oriuslauncher.oriuslauncher.override {
+          oriuslauncher-debug = oriusPackages.oriuslauncher.override {
             oriuslauncher-unwrapped = legacyPackages.oriuslauncher-unwrapped-debug;
           };
 
-          oriuslauncher-unwrapped-debug = oriuslauncher.oriuslauncher-unwrapped.overrideAttrs {
+          oriuslauncher-unwrapped-debug = oriusPackages.oriuslauncher-unwrapped.overrideAttrs {
             cmakeBuildType = "Debug";
             dontStrip = true;
           };
