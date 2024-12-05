@@ -1242,10 +1242,10 @@ void Application::performMainStartupAction()
         if (shouldFetch && !(capabilities() & Capability::SupportsFlame)) {
             QMessageBox msgBox{ m_mainWindow };
             msgBox.setWindowTitle(tr("Fetch CurseForge Core API key?"));
-            msgBox.setText(tr("Would you like to fetch the official CurseForge app's API key now?"));
+            msgBox.setText(tr("Would you like to fetch the CurseForge application's API key?"));
             msgBox.setInformativeText(
-                tr("Using the official CurseForge app's API key may break CurseForge's terms of service but should allow the Launcher "
-                   "to download all mods in a modpack without you needing to download any of them manually."));
+                tr("Using the CurseForge application's API key may break CurseForge's terms of service but should allow the Launcher "
+                   "to download all the mods in a modpack without manual intervention."));
             msgBox.setStandardButtons(QMessageBox::No | QMessageBox::Yes);
             msgBox.setDefaultButton(QMessageBox::Yes);
             msgBox.setModal(true);
