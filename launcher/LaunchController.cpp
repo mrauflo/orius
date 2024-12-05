@@ -174,21 +174,6 @@ void LaunchController::login()
     decideAccount();
 
     if (!m_accountToUse) {
-        // if no account is selected, ask about demo
-        if (!m_demo) {
-            m_demo = askPlayDemo();
-        }
-        if (m_demo) {
-            // we ask the user for a player name
-            bool ok = false;
-            auto name = askOfflineName("Player", m_demo, ok);
-            if (ok) {
-                m_session = std::make_shared<AuthSession>();
-                m_session->MakeDemo(name, MinecraftAccount::uuidFromUsername(name).toString().remove(QRegularExpression("[{}-]")));
-                launchInstance();
-                return;
-            }
-        }
         // if no account is selected, we bail
         emitFailed(tr("No account selected for launch."));
         return;
