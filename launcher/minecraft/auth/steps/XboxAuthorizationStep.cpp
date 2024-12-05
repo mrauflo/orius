@@ -115,8 +115,7 @@ bool XboxAuthorizationStep::processSTSError()
         switch (errorCode) {
             case 2148916233: {
                 emit finished(AccountTaskState::STATE_FAILED_SOFT,
-                              tr("This Microsoft account does not have an XBox Live profile. Buy the game on %1 first.")
-                                  .arg("<a href=\"https://www.minecraft.net/en-us/store/minecraft-java-edition\">minecraft.net</a>"));
+                              tr("This Microsoft account does not have an Xbox Live profile. "));
                 return true;
             }
             case 2148916235: {
