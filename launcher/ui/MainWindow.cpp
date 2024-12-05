@@ -758,18 +758,6 @@ QString intListToString(const QList<int>& list)
     return slist.join(',');
 }
 
-void MainWindow::onCatToggled(bool state)
-{
-    setCatBackground(state);
-    APPLICATION->settings()->set("TheCat", state);
-}
-
-void MainWindow::setCatBackground(bool enabled)
-{
-    view->setPaintCat(enabled);
-    view->viewport()->repaint();
-}
-
 void MainWindow::runModalTask(Task* task)
 {
     connect(task, &Task::failed,
@@ -1264,11 +1252,6 @@ void MainWindow::on_actionAddToPATH_triggered()
 void MainWindow::on_actionOpenWiki_triggered()
 {
     DesktopServices::openUrl(QUrl(BuildConfig.HELP_URL.arg("")));
-}
-
-void MainWindow::onCatChanged(int)
-{
-    setCatBackground(APPLICATION->settings()->get("TheCat").toBool());
 }
 
 void MainWindow::on_actionAbout_triggered()
