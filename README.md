@@ -1,4 +1,4 @@
-# Orius Launcher
+# <img src="./program_info/org.mrauflo.OriusLauncher.svg" alt="Orius Launcher logo" width="96"/> Orius Launcher
 
 Orius is an open-source Minecraft launcher based on [Fjord Launcher](https://github.com/unmojang/FjordLauncher). This project is not endorsed by or affiliated with Fjord Launcher.
 
