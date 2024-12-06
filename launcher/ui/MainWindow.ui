@@ -428,7 +428,7 @@
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>Prism Launcher (zip)</string>
+    <string>Orius Launcher (zip)</string>
    </property>
   </action>
   <action name="actionExportInstanceMrPack">
